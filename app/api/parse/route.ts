@@ -1,6 +1,23 @@
 import { NextResponse } from 'next/server';
-const pdfParse = require('pdf-parse');
+import PDFParser from 'pdf2json';
 import mammoth from 'mammoth';
+
+export const dynamic = 'force-dynamic';
+export const maxDuration = 60;
+
+function extractPdfText(buffer: Buffer): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const pdfParser = new (PDFParser as any)(null, true);
+    pdfParser.on('pdfParser_dataError', (err: any) => {
+      reject(err?.parserError || err || 'Failed to parse PDF.');
+    });
+    pdfParser.on('pdfParser_dataReady', () => {
+      const rawText = pdfParser.getRawTextContent();
+      resolve(rawText || '');
+    });
+    pdfParser.parseBuffer(buffer);
+  });
+}
 
 export async function POST(req: Request) {
   try {
@@ -19,8 +36,7 @@ export async function POST(req: Request) {
     let extractedText = '';
 
     if (ext === 'pdf') {
-      const pdfData = await pdfParse(buffer);
-      extractedText = pdfData.text || '';
+      extractedText = await extractPdfText(buffer);
     } else if (ext === 'docx' || ext === 'doc') {
       const docxResult = await mammoth.extractRawText({ buffer });
       extractedText = docxResult.value || '';

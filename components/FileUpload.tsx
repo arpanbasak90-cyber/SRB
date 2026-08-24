@@ -16,6 +16,12 @@ export const FileUpload: React.FC<FileUploadProps> = ({ onTextExtracted, disable
 
   const uploadAndParseFile = async (file: File) => {
     setError(null);
+
+    if (file.size > 100 * 1024 * 1024) {
+      setError('File size exceeds the 100MB maximum limit.');
+      return;
+    }
+
     setIsExtracting(true);
     setFileName(file.name);
 
@@ -120,7 +126,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({ onTextExtracted, disable
                   Upload Resume File (.PDF or .DOCX)
                 </p>
                 <p className="text-xs text-slate-500 dark:text-slate-400">
-                  Drag & drop your PDF or DOCX file here, or <span className="text-blue-600 dark:text-blue-400 font-medium">browse files</span>
+                  Drag & drop your PDF or DOCX file here (max 100MB), or <span className="text-blue-600 dark:text-blue-400 font-medium">browse files</span>
                 </p>
               </div>
             </>
