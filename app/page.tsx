@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ScoreGauge } from '@/components/ScoreGauge';
 import { RoastList } from '@/components/RoastList';
 import { RewrittenBullets } from '@/components/RewrittenBullets';
+import { FileUpload } from '@/components/FileUpload';
 import { AnalysisResponse } from '@/app/api/analyze/route';
 import {
   FileText,
@@ -15,7 +16,7 @@ import {
   Wand2,
   CheckCircle2,
   ShieldCheck,
-  ArrowRight
+  Paperclip
 } from 'lucide-react';
 
 const SAMPLE_RESUME = `Jane Doe
@@ -132,10 +133,33 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             className="glass-card rounded-2xl p-6 sm:p-8 space-y-6 shadow-2xl border-slate-800"
           >
+            {/* File Upload Attachment Section */}
+            <div className="space-y-4">
+              <div className="flex items-center gap-2 text-sm font-semibold text-slate-200">
+                <Paperclip className="w-4 h-4 text-indigo-400" />
+                <span>Upload Resume Document</span>
+              </div>
+
+              <FileUpload
+                disabled={isLoading}
+                onTextExtracted={(text, name) => {
+                  setResumeText(text);
+                  setError(null);
+                }}
+              />
+            </div>
+
+            {/* Divider */}
+            <div className="relative flex py-1 items-center">
+              <div className="flex-grow border-t border-slate-800"></div>
+              <span className="flex-shrink mx-4 text-xs uppercase tracking-widest text-slate-500 font-bold">OR PASTE TEXT</span>
+              <div className="flex-grow border-t border-slate-800"></div>
+            </div>
+
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <div className="flex items-center gap-2.5">
                 <FileText className="w-5 h-5 text-indigo-400" />
-                <h2 className="text-lg font-bold text-white">Paste Resume Text</h2>
+                <h2 className="text-lg font-bold text-white">Resume Text</h2>
               </div>
 
               <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
