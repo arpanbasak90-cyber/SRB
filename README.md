@@ -2,11 +2,16 @@
 
 > An instant, zero-friction web application that analyzes raw resume text using AI to deliver a numerical score, witty constructive roast critiques, and action-driven STAR bullet point rewrites on a single dashboard screen.
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Next.js](https://img.shields.io/badge/Next.js-14.2-black?logo=next.js)
-![React](https://img.shields.io/badge/React-18-blue?logo=react)
-![TailwindCSS](https://img.shields.io/badge/Tailwind-3.4-38bdf8?logo=tailwindcss)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.6-blue?logo=typescript)
+[![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-srb--lake.vercel.app-10b981?style=for-the-badge&logo=vercel)](https://srb-lake.vercel.app)
+[![GitHub Repository](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github)](https://github.com/arpanbasak90-cyber/SRB)
+
+---
+
+## 📸 Preview & Demo
+
+![AI Resume Checker Landing Page](public/screenshot.png)
+
+🔗 **Live URL:** [https://srb-lake.vercel.app](https://srb-lake.vercel.app)
 
 ---
 
@@ -18,6 +23,34 @@
 * **✨ Action-Driven STAR Rewrites**: Before-and-After cards providing ready-to-use, metric-rich bullet rewrites with 1-click **Copy to Clipboard**.
 * **🔒 Secure Serverless Backend**: Keeps your AI provider secret API key (`CLAUDE_API_KEY`, `OPENAI_API_KEY`, or `GEMINI_API_KEY`) safe on the server side (`/api/analyze`).
 * **🎨 Preview Demo Mode**: Includes an intelligent mock fallback so you can run, test, and demonstrate the full UI flow locally even without an active API key.
+
+---
+
+## 📁 Project Folder Structure
+
+```
+SRB/
+├── app/
+│   ├── api/
+│   │   └── analyze/
+│   │       └── route.ts         # Serverless API endpoint handling AI analysis & mock fallback
+│   ├── globals.css              # Glassmorphism design system & custom gradients
+│   ├── layout.tsx               # Root HTML metadata & font layout wrapper
+│   └── page.tsx                 # Main single-page interactive UI (Input & Results)
+├── components/
+│   ├── RewrittenBullets.tsx     # Before/After STAR bullet rewrite cards with 1-click copy
+│   ├── RoastList.tsx            # Flame-styled roast points & strengths breakdown
+│   └── ScoreGauge.tsx           # Animated SVG radial score meter & grade badge
+├── public/
+│   └── screenshot.png           # Landing page preview screenshot
+├── .env.example                 # Environment variables template
+├── next.config.mjs              # Next.js configuration
+├── package.json                 # Project dependencies & scripts
+├── postcss.config.js            # PostCSS configuration for Tailwind
+├── tailwind.config.ts           # Tailwind CSS design system tokens
+├── tsconfig.json                # TypeScript configuration
+└── README.md                    # Project documentation
+```
 
 ---
 
@@ -41,6 +74,7 @@ flowchart LR
 * **Frontend**: React 18, [Framer Motion](https://www.framer.com/motion/) (Micro-animations), [Lucide Icons](https://lucide.dev/)
 * **Styling**: Tailwind CSS & Glassmorphism Design System
 * **Backend**: Next.js API Routes (Serverless Function)
+* **Hosting**: [Vercel](https://vercel.com/)
 * **AI Provider Support**: Anthropic Claude (`claude-3-5-sonnet`), OpenAI (`gpt-4o-mini`), or Google Gemini (`gemini-1.5-flash`)
 
 ---
@@ -87,17 +121,6 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
-
----
-
-## 🌐 Deploy to Vercel
-
-The easiest way to deploy this project for general public use is using [Vercel](https://vercel.com/):
-
-1. Push your code to GitHub (done!).
-2. Import the repository on **Vercel**.
-3. Add your `ANTHROPIC_API_KEY`, `OPENAI_API_KEY`, or `GEMINI_API_KEY` under **Environment Variables**.
-4. Click **Deploy**.
 
 ---
 
