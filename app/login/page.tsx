@@ -13,6 +13,7 @@ export default function Login() {
   
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [devOtp, setDevOtp] = useState('')
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -39,6 +40,10 @@ export default function Login() {
       })
       const data = await res.json()
       if (res.ok) {
+        if (data.otp) {
+          setDevOtp(data.otp)
+          setOtp(data.otp) // auto-fill
+        }
         setStep('otp')
       } else {
         setError(data.error || 'Failed to send OTP')
@@ -142,7 +147,7 @@ export default function Login() {
 
                 {step === 'otp' && (
                   <>
-                    <p className="text-sm text-white/70 text-center mb-2">An OTP was sent to {email}. Check console.</p>
+                    <p className="text-sm text-white/70 text-center mb-2">A 6-digit OTP has been sent to <span className="text-neon-lime">{email}</span>. Check your inbox!</p>
                     <input 
                       type="text" 
                       placeholder="6-digit OTP"
