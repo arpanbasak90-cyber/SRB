@@ -1,49 +1,56 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Space+Grotesk:wght@300..700&display=swap');
 
-:root {
-  --bg-main: #f8fafc;
-  --bg-card: #ffffff;
-  --text-main: #0f172a;
-  --text-muted: #64748b;
-  --border-color: #e2e8f0;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-html.dark {
-  --bg-main: #090d16;
-  --bg-card: #111827;
-  --text-main: #f8fafc;
-  --text-muted: #94a3b8;
-  --border-color: #1f2937;
+@layer base {
+  body {
+    @apply bg-black text-foreground font-sans antialiased;
+  }
 }
 
-body {
-  background-color: var(--bg-main);
-  color: var(--text-main);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  min-height: 100vh;
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
+@layer utilities {
+  .glass-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1.5rem;
+  }
+  
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
 
-.clean-card {
-  background-color: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: 0.75rem;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
-}
+  .neon-button {
+    @apply bg-neon-lime text-black font-bold rounded-full px-8 py-4 transition-all duration-300;
+    box-shadow: 0 0 30px rgba(204, 255, 0, 0.3);
+  }
+  
+  .neon-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 40px rgba(204, 255, 0, 0.5);
+  }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 3px;
-}
-html.dark ::-webkit-scrollbar-thumb {
-  background: #334155;
+  /* 60px linear gradient grid pattern */
+  .bg-grid-pattern {
+    background-size: 60px 60px;
+    background-image: 
+      linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  }
+
+  .bg-noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.15;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+  }
+  
+  .glow-sphere {
+    background: radial-gradient(circle, rgba(204, 255, 0, 0.15) 0%, transparent 70%);
+    filter: blur(120px);
+  }
 }
