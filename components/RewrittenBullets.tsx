@@ -25,7 +25,7 @@ export const RewrittenBullets: React.FC<RewrittenBulletsProps> = ({ bullets }) =
     <div className="clean-card p-6 space-y-6">
       <div>
         <h3 className="text-base font-bold text-slate-900 dark:text-white">Rewritten Bullet Points</h3>
-        <p className="text-xs text-slate-500 dark:text-slate-400">Action-oriented improvements ready to copy into your resume</p>
+        <p className="text-xs text-slate-600 dark:text-slate-400 font-medium">Action-oriented improvements ready to copy into your resume</p>
       </div>
 
       <div className="space-y-4">
@@ -35,8 +35,8 @@ export const RewrittenBullets: React.FC<RewrittenBulletsProps> = ({ bullets }) =
             className="p-4 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 space-y-3"
           >
             {/* Original */}
-            <div className="text-xs text-slate-500 dark:text-slate-400">
-              <span className="font-semibold text-red-500">Original: </span>
+            <div className="text-xs text-slate-600 dark:text-slate-400">
+              <span className="font-semibold text-red-600 dark:text-red-400">Original: </span>
               <span className="line-through">{bullet.original}</span>
             </div>
 
@@ -52,8 +52,8 @@ export const RewrittenBullets: React.FC<RewrittenBulletsProps> = ({ bullets }) =
             </div>
 
             {/* Reason */}
-            <div className="text-xs text-slate-500 dark:text-slate-400">
-              <span className="font-medium text-slate-700 dark:text-slate-300">Why: </span>
+            <div className="text-xs text-slate-600 dark:text-slate-400">
+              <span className="font-semibold text-slate-800 dark:text-slate-200">Why: </span>
               {bullet.reason}
             </div>
           </div>

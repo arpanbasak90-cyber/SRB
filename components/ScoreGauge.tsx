@@ -31,7 +31,7 @@ export const ScoreGauge: React.FC<ScoreGaugeProps> = ({ score, grade, summary, i
         {/* Simple Score Pill / Circle */}
         <div className="flex flex-col items-center justify-center p-6 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 min-w-[140px] text-center shrink-0">
           <span className="text-5xl font-black text-slate-900 dark:text-white tracking-tight">{score}</span>
-          <span className="text-xs text-slate-500 dark:text-slate-400 font-medium mt-1">/ 100 Score</span>
+          <span className="text-xs text-slate-600 dark:text-slate-400 font-medium mt-1">/ 100 Score</span>
           <span className={`mt-3 text-xs font-bold px-3 py-1 rounded-full border ${getBadgeStyle(score)}`}>
             Grade {grade}
           </span>
@@ -42,7 +42,7 @@ export const ScoreGauge: React.FC<ScoreGaugeProps> = ({ score, grade, summary, i
           <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
             {score >= 80 ? 'Solid Resume Structure' : score >= 65 ? 'Needs Actionable Impact' : 'Needs Significant Revision'}
           </h2>
-          <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+          <p className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
             {summary}
           </p>
         </div>

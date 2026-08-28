@@ -125,8 +125,8 @@ export const FileUpload: React.FC<FileUploadProps> = ({ onTextExtracted, disable
                 <p className="text-sm font-semibold text-slate-800 dark:text-slate-200">
                   Upload Resume File (.PDF or .DOCX)
                 </p>
-                <p className="text-xs text-slate-500 dark:text-slate-400">
-                  Drag & drop your PDF or DOCX file here (max 100MB), or <span className="text-blue-600 dark:text-blue-400 font-medium">browse files</span>
+                <p className="text-xs text-slate-600 dark:text-slate-400 font-medium">
+                  Drag & drop your PDF or DOCX file here (max 100MB), or <span className="text-blue-600 dark:text-blue-400 font-bold">browse files</span>
                 </p>
               </div>
             </>
